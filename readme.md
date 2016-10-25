@@ -9,11 +9,7 @@ curl -X PUT -d @policy.json http://localhost:8500/v1/acl/create?token=<managemen
 
 ```json
 {
-  "acl_datacenter":"dc1",
-  "acl_default_policy":"allow",
-  "acl_down_policy":"allow",
   "datacenter": "dc1",
-  "acl_master_token":"398073a8-5091-4d9c-871a-bbbeb030d1f6",
   "skip_leave_on_interrupt": true,
   "encrypt": "Nwgk7kfcZcNRymDU+eNvkA==",
   "addresses": {
@@ -28,11 +24,9 @@ curl -X PUT -d @policy.json http://localhost:8500/v1/acl/create?token=<managemen
   "ports": {
       "https": 8501
   },
-  "verify_incoming": true,
+  "verify_incoming": false,
   "verify_outgoing": true,
   "ca_file": "/app_vg/hashicorp/certs/ca.pem",
-  "key_file": "/app_vg/hashicorp/certs/key.pem",
-  "cert_file": "/app_vg/hashicorp/certs/cert.pem",
   "retry_join": ["10.0.0.240", "10.0.0.46", "10.0.0.135"],
   "check_update_interval": "0s"
 }
