@@ -33,7 +33,8 @@ curl -X PUT -d @policy.json http://localhost:8500/v1/acl/create?token=<managemen
   "ca_file": "/app_vg/hashicorp/certs/ca.pem",
   "key_file": "/app_vg/hashicorp/certs/key.pem",
   "cert_file": "/app_vg/hashicorp/certs/cert.pem",
-  "retry_join": ["10.0.0.240", "10.0.0.46", "10.0.0.135"]
+  "retry_join": ["10.0.0.240", "10.0.0.46", "10.0.0.135"],
+  "check_update_interval": "0s"
 }
 ```
 
