@@ -41,7 +41,9 @@ curl -X PUT -d @policy.json http://localhost:8500/v1/acl/create?token=<managemen
             "address": "unix:///tmp/consul-http.sock",
             "scheme": "http",
             "redirect_addr": "https://10.0.0.158:8200",
-            "token": "c16c1564-9c95-8e6f-88f3-d07e95c9e5ac"
+            "token": "c16c1564-9c95-8e6f-88f3-d07e95c9e5ac",
+            "service": "hashicorp-vault",
+            "service_tags": ["middleware", "hasicorp"]
         }
     },
     "listener": {
