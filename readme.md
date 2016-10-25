@@ -57,3 +57,22 @@ curl -X PUT -d @policy.json http://localhost:8500/v1/acl/create?token=<managemen
 }
 ```
 
+### Vault Upstart
+
+```config
+description "Vault server"
+start on runlevel [2345]
+stop on runlevel [!2345]
+respawn
+script
+  if [ -f "/etc/service/vault" ]; then
+	  . /etc/service/vault
+  fi
+  # Make sure to use all our CPUs, because Vault can block a scheduler thread
+  export GOMAXPROCS=`nproc`
+  setcap cap_ipc_lock=+ep $(readlink -f /app_vg/hashicorp/vault/bin/vault)
+
+  exec su -s /bin/sh -c 'exec "$0" "$@"' vault -- /opt/hashicorp/vault/bin/vault server -config="/opt/hashicorp/vault/config/vault-config.json"  \$${VAULT_FLAGS}  >>/opt/hashicorp/vault/log/vault.log 2>&1
+end script
+```
+
